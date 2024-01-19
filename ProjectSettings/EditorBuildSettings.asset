@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PhontonNetwork/PhotonPUN.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/PhontonNetwork/LevelOne.unity
+    guid: 9e5773e3f8b8bde498ecc32edffbc54d
   m_configObjects: {}
