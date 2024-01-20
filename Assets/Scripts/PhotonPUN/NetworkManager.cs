@@ -13,9 +13,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public bool debug = true;
     public GameObject severConnectBtn;
 
+    string gameVersion = "1.0";
+
     private void Awake()
     {
-        PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.ConnectUsingSettings(); //서버연결 후 설정
+
+        PhotonNetwork.AutomaticallySyncScene = true; //클라이언트들의 씬 동기화 설정
+        PhotonNetwork.GameVersion = gameVersion;
+        Screen.SetResolution(1600, 1000, false); //해상도
     }
 
     public override void OnConnectedToMaster()
@@ -44,6 +50,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if (debug)
             print("Room In");
 
-        PhotonNetwork.LoadLevel("LevelOne");
+        if(PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel("LevelOne");
+        }
     }
 }
