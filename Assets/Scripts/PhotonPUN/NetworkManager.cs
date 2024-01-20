@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
-using System.Diagnostics;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -18,7 +16,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PhotonNetwork.ConnectUsingSettings(); //서버연결 후 설정
-
         PhotonNetwork.AutomaticallySyncScene = true; //클라이언트들의 씬 동기화 설정
         PhotonNetwork.GameVersion = gameVersion;
         Screen.SetResolution(1600, 1000, false); //해상도
