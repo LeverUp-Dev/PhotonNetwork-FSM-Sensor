@@ -152,12 +152,12 @@ public class PlayerController : MonoBehaviour, IPunObservable, IOnEventCallback
         }
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         PhotonNetwork.AddCallbackTarget(this);
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         PhotonNetwork.RemoveCallbackTarget(this);
     }

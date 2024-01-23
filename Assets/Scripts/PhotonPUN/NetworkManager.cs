@@ -11,7 +11,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public bool debug = true;
     public GameObject severConnectBtn;
 
-    string gameVersion = "1.0";
+    string gameVersion = "1";
 
     private void Awake()
     {
