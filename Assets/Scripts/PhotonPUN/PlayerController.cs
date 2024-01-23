@@ -6,7 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class PlayerController : MonoBehaviour, IPunObservable, IOnEventCallback
+public class PlayerController : MonoBehaviourPun, IPunObservable, IOnEventCallback
 {
     //레퍼런스
     public Material[] materials;
@@ -65,6 +65,13 @@ public class PlayerController : MonoBehaviour, IPunObservable, IOnEventCallback
         }
     }
 
+    [PunRPC]
+    void RPCFire()
+    {
+        GameObject bulletObj = Instantiate(bullet, firePos.position, transform.rotation);
+        Destroy(bulletObj, 5);
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -81,13 +88,6 @@ public class PlayerController : MonoBehaviour, IPunObservable, IOnEventCallback
         }
     }
 
-    [PunRPC]
-    void RPCFire()
-    {
-        GameObject bulletObj = Instantiate(bullet, firePos.position, transform.rotation);
-        Destroy(bulletObj, 5);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Bullet")
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour, IPunObservable, IOnEventCallback
 
             if(hp <= 0)
             {
-                SendEvent(); // Raise Event
+                SendEvent();
                 StartCoroutine("ExplosionTank");
             }
         }
@@ -147,7 +147,6 @@ public class PlayerController : MonoBehaviour, IPunObservable, IOnEventCallback
             else
             {
                 print(temp);
-                transform.position = temp;
             }
         }
     }
